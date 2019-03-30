@@ -2,6 +2,7 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import StatusBadge from "./status-badge";
 import UpdateTimestamp from "./update-timestamp";
+import Container from "./container";
 
 function Timeline({ updates }) {
   if (updates && updates.length) {
@@ -20,17 +21,13 @@ function Timeline({ updates }) {
       );
     });
 
-    const divStyle = {
-      marginTop: "3rem"
-    };
-
     return (
-      <div style={divStyle}>
+      <Container>
         <h2>Timeline</h2>
         <Table striped>
           <tbody>{formattedUpdates}</tbody>
         </Table>
-      </div>
+      </Container>
     );
   }
 

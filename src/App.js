@@ -1,43 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Navbar } from "react-bootstrap";
 import "./App.css";
 
-import UpdateForm from "./components/update-form";
-import OutputBlock from "./components/output-block";
-import Timeline from "./components/timeline";
+import Incident from "./pages/incident";
 
 function App() {
-  const [updates, setUpdate] = useState([]);
-
-  const addUpdate = (description, status, message) => {
-    setUpdate([
-      ...updates,
-      {
-        timestamp: new Date(),
-        description,
-        status,
-        message
-      }
-    ]);
-  };
-
-  const getLatestUpdate = () => updates[updates.length - 1];
-
-  const containerStyle = {
-    marginTop: "3rem"
-  };
-
   return (
-    <div>
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand>CirlceIC</Navbar.Brand>
-      </Navbar>
-      <div className="App container" style={containerStyle}>
-        <UpdateForm addUpdate={addUpdate} />
-        <OutputBlock update={getLatestUpdate()} />
-        <Timeline updates={updates} />
+    <Router>
+      <div>
+        <Navbar bg="dark" variant="dark">
+          <Navbar.Brand>CirlceIC</Navbar.Brand>
+        </Navbar>
+
+        <Route path="/" exact component={Incident} />
       </div>
-    </div>
+    </Router>
   );
 }
 

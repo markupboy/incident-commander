@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Form } from "react-bootstrap";
+import Container from "./container";
 
 const selectOnFocus = event => {
   event.target.select();
@@ -18,12 +19,8 @@ function OutputBlock({ update }) {
 *Update*: ${message}
 `;
 
-    const divStyle = {
-      marginTop: "3rem"
-    };
-
     return (
-      <div style={divStyle}>
+      <Container>
         <h2>Update Formatted for Slack</h2>
         <Form.Control
           as="textarea"
@@ -32,7 +29,7 @@ function OutputBlock({ update }) {
           readOnly
           onFocus={selectOnFocus}
         />
-      </div>
+      </Container>
     );
   }
 
