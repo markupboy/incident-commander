@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import { Form } from "react-bootstrap";
 
@@ -6,20 +6,25 @@ const selectOnFocus = event => {
   event.target.select();
 };
 
-const emoji = ":rotating_light:"
+const emoji = ":rotating_light:";
 
-class OutputBlock extends Component {
-  render() {
-    const output = [
-      `${emoji} *Incident Status Update* ${emoji}`,
-      "*Incident Description*: " + this.props.description,
-      "*Status*: " + this.props.status,
-      "*Update*: " + this.props.update
-    ].join("\n");
+function OutputBlock({ update }) {
+  if (update) {
+    const { description, status, message } = update;
+
+    const output = `${emoji} *Incident Status Update* ${emoji}
+*Incident Description*:  ${description}
+*Status*: ${status}
+*Update*: ${message}
+`;
+
+    const divStyle = {
+      marginTop: "3rem"
+    };
 
     return (
-      <Form.Group controlId="formOutput">
-        <Form.Label>Slack formatted update</Form.Label>
+      <div style={divStyle}>
+        <h2>Update Formatted for Slack</h2>
         <Form.Control
           as="textarea"
           value={output}
@@ -27,9 +32,11 @@ class OutputBlock extends Component {
           readOnly
           onFocus={selectOnFocus}
         />
-      </Form.Group>
+      </div>
     );
   }
+
+  return null;
 }
 
 export default OutputBlock;
