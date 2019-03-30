@@ -17,14 +17,28 @@ class UpdateForm extends Component {
     this.updateRef = React.createRef();
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
-  handleSubmit(event) {
+  updateStateFromForm() {
     this.setState({
       description: this.descriptionRef.current.value,
       status: this.statusRef.current.value,
       update: this.updateRef.current.value
     });
+  }
+
+  handleReset(event) {
+    this.descriptionRef.current.value = "";
+    this.statusRef.current.value = "";
+    this.updateRef.current.value = "";
+    this.updateStateFromForm();
+    event.preventDefault();
+  }
+
+  handleSubmit(event) {
+    this.updateStateFromForm();
+    this.updateRef.current.value = "";
     event.preventDefault();
   }
 
@@ -61,6 +75,9 @@ class UpdateForm extends Component {
         <Form.Group>
           <Button variant="primary" type="submit">
             Submit
+          </Button>&nbsp;
+            <Button variant="secondary" onClick={this.handleReset}>
+            Reset
           </Button>
         </Form.Group>
 

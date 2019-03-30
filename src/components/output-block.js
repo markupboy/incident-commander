@@ -6,10 +6,12 @@ const selectOnFocus = event => {
   event.target.select();
 };
 
+const emoji = ":rotating_light:"
+
 class OutputBlock extends Component {
   render() {
     const output = [
-      ":boom::boom::boom: *Incident Status Update* :boom::boom::boom:",
+      `${emoji} *Incident Status Update* ${emoji}`,
       "*Incident Description*: " + this.props.description,
       "*Status*: " + this.props.status,
       "*Update*: " + this.props.update
