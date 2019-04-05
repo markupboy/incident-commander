@@ -10,7 +10,7 @@ function App() {
     <Router>
       <div>
         <Navbar bg="dark" variant="dark">
-          <Navbar.Brand>CirlceIC</Navbar.Brand>
+          <Navbar.Brand>CircleIC</Navbar.Brand>
         </Navbar>
 
         <Route path="/" exact component={Incident} />
