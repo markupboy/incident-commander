@@ -1,16 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Button, Form } from "react-bootstrap";
 
-function UpdateForm({ addUpdate }) {
+function UpdateForm({ addUpdate, resetUpdates, previousUpdate }) {
   const descriptionRef = React.createRef();
   const statusRef = React.createRef();
   const messageRef = React.createRef();
 
   const handleReset = event => {
-    descriptionRef.current.value = "";
-    statusRef.current.value = "";
-    messageRef.current.value = "";
+    resetUpdates();
     event.preventDefault();
   };
 
@@ -23,6 +21,16 @@ function UpdateForm({ addUpdate }) {
     messageRef.current.value = "";
     event.preventDefault();
   };
+
+  useEffect(() => {
+    if (previousUpdate) {
+      descriptionRef.current.value = previousUpdate.description;
+      statusRef.current.value = previousUpdate.status;
+    } else {
+      descriptionRef.current.value = "";
+      statusRef.current.value = "";
+    }
+  });
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -37,7 +45,7 @@ function UpdateForm({ addUpdate }) {
       <Form.Group controlId="formStatus">
         <Form.Label>Status</Form.Label>
         <Form.Control as="select" ref={statusRef}>
-          <option value="" readonly />
+          <option value="" readOnly />
           <option value="Investigating">Investigating</option>
           <option value="Identified">Identified</option>
           <option value="Monitoring">Monitoring</option>

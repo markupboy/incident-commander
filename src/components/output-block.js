@@ -16,8 +16,7 @@ function OutputBlock({ update }) {
     const output = `${emoji} *Incident Status Update* ${emoji}
 *Incident Description*:  ${description}
 *Status*: ${status}
-*Update*: ${message}
-`;
+*Update*: ${message}`;
 
     return (
       <Container>

@@ -20,11 +20,19 @@ function Incident({ match }) {
     ]);
   };
 
+  const resetUpdates = () => {
+    setUpdate([]);
+  };
+
   const getLatestUpdate = () => updates[updates.length - 1];
 
   return (
     <Container>
-      <UpdateForm addUpdate={addUpdate} />
+      <UpdateForm
+        previousUpdate={getLatestUpdate()}
+        addUpdate={addUpdate}
+        resetUpdates={resetUpdates}
+      />
       <OutputBlock update={getLatestUpdate()} />
       <Timeline updates={updates} />
     </Container>
