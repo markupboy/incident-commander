@@ -1,7 +1,7 @@
 FROM node:11-alpine
 
 # Install prereqs
-RUN apk --update add alpine-sdk
+RUN apk --update add alpine-sdk git
 
 # Install aws-cli
 RUN \
