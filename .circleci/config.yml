@@ -7,7 +7,7 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: markupboy/node-aws:0.0.2
+      - image: markupboy/node-aws:0.0.3
     working_directory: ~/repo
     steps:
       - checkout
@@ -27,7 +27,7 @@ jobs:
 
   build-and-deploy:
     docker:
-      - image: markupboy/node-aws:0.0.2
+      - image: markupboy/node-aws:0.0.3
     working_directory: ~/repo
     steps:
       - checkout
