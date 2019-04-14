@@ -32,7 +32,7 @@ function OutputBlock({ update }) {
       if (copied) {
         timeout = setTimeout(() => {
           setCopied(false);
-        }, 5e3);
+        }, 2e3);
       }
     });
 
