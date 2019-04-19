@@ -10,6 +10,8 @@ const compareTimestamps = (timeA, timeB) => {
 };
 
 function UpdateTimestamp({ start, timestamp }) {
+  timestamp = new Date(timestamp);
+
   return (
     <OverlayTrigger
       placement="top"

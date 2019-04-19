@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import UpdateForm from "../components/update-form";
 import OutputBlock from "../components/output-block";
@@ -20,11 +20,28 @@ function Incident({ match }) {
     ]);
   };
 
+  useEffect(() => {
+    if (updates && updates.length === 0) {
+      const loadedUpdates = JSON.parse(localStorage.getItem("updates"));
+      setUpdate(loadedUpdates);
+      return;
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("updates", JSON.stringify(updates));
+  });
+
   const resetUpdates = () => {
     setUpdate([]);
   };
 
-  const getLatestUpdate = () => updates[updates.length - 1];
+  const getLatestUpdate = () => {
+    if (updates === null) {
+      return null;
+    }
+    return updates[updates.length - 1];
+  };
 
   return (
     <Container>
