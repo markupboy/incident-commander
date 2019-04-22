@@ -14,13 +14,15 @@ jobs:
       - restore_cache:
           name: Restore NPM Package Cache
           keys:
-            - npm-packages-{{ checksum "package-lock.json" }}
+            - node-v11-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - node-v11-{{ .Branch }}-
+            - node-v11-
       - run: npm install
       - save_cache:
           name: Save NPM Package Cache
-          key: npm-packages-{{ checksum "package-lock.json" }}
+          key: node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
-            - ~/.cache/npm
+            - ~/usr/local/lib/node_modules
       - run:
           name: Run tests
           command: npm run test
@@ -34,7 +36,9 @@ jobs:
       - restore_cache:
           name: Restore NPM Package Cache
           keys:
-            - npm-packages-{{ checksum "package-lock.json" }}
+            - node-v11-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - node-v11-{{ .Branch }}-
+            - node-v11-
       - run: npm install
       - run:
           name: Build
