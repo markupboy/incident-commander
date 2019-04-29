@@ -23,7 +23,9 @@ function Incident({ match }) {
   useEffect(() => {
     if (updates && updates.length === 0) {
       const loadedUpdates = JSON.parse(localStorage.getItem("updates"));
-      setUpdate(loadedUpdates);
+      if (loadedUpdates) {
+        setUpdate(loadedUpdates);
+      }
       return;
     }
   }, []);
