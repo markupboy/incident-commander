@@ -1,5 +1,6 @@
 import { Selector } from "testcafe";
 
+// eslint-disable-next-line no-undef
 fixture(`Getting Started`).page(`http://localhost:3000`);
 
 const updateDescription = async function(t, description) {
