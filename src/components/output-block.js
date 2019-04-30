@@ -7,7 +7,13 @@ const selectOnFocus = event => {
   event.target.select();
 };
 
-const emoji = ":rotating_light:";
+const emojiLookup = {
+  Identified: ":rotating_light:",
+  Investigating: ":rotating_light:",
+  Monitoring: ":warning:",
+  Resolved: ":white_check_mark:",
+  default: ":rotating_light:"
+};
 
 function OutputBlock({ update }) {
   if (update) {
@@ -21,6 +27,8 @@ function OutputBlock({ update }) {
       outputRef.current.select();
       document.execCommand("copy");
     };
+
+    const emoji = emojiLookup[status] || emojiLookup.default;
 
     const output = `${emoji} *Incident Status Update* ${emoji}
 *Incident Description*:  ${description}
