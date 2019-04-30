@@ -24,8 +24,14 @@ jobs:
           paths:
             - ~/usr/local/lib/node_modules
       - run:
+          name: Running test instance
+          command: npm start
+          background: true
+      - run:
           name: Run tests
           command: npm run test
+      - store_test_results:
+          path: /tmp/test-results
 
   build-and-deploy:
     docker:
