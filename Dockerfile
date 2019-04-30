@@ -5,11 +5,11 @@ RUN apk --update add alpine-sdk git
 
 # Install aws-cli
 RUN \
-    mkdir -p /aws && \
-    apk -Uuv add groff less python python-dev py-pip && \
-    pip install awscli && \
-    apk --purge -v del py-pip && \
-    rm /var/cache/apk/*
+  mkdir -p /aws && \
+  apk -Uuv add groff less python python-dev py-pip && \
+  pip install awscli && \
+  apk --purge -v del py-pip && \
+  rm /var/cache/apk/*
 
 # Fix timezone
 RUN apk add --update tzdata
